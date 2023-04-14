@@ -1,0 +1,12 @@
+.parentMain{
+    width: 100%;
+    padding: 3.5em .8em 2em;
+    margin-bottom: 2em;
+    background-color: white;
+    border-radius: .3rem;
+    border: 1px solid #e5e5e5;
+    transition: all .5s;
+}
+.parentMain:hover{
+    box-shadow: 0px 4px 19.98px 7.02px rgba(0, 0, 0, 0.17);
+}
