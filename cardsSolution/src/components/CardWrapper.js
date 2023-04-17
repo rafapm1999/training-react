@@ -2,7 +2,7 @@ import './CardWrapper.css';
 function CardWrapper(props) {
   return (
     <div className="parentMain">
-       {props.child}
+       {props.children}
     </div>
   );
 }
