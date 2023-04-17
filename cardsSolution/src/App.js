@@ -26,7 +26,7 @@ function App() {
           </div>
         </div>
         <div className="info-container">
-          <h3>MR.ROBERT</h3>
+          <h3>{freelancer.title}</h3> //----------------------------------
           <p>UI/UX Designer</p>
           <div className="hire">
             <div>
@@ -67,6 +67,6 @@ function App() {
       </CardWrapper>
       </div>
   );
-}
+};
 
 export default App;
