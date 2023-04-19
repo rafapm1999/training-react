@@ -1,0 +1,16 @@
+.div_launch{
+    border: 1px solid black;
+    display: inline-block;
+    margin: 1.3em;
+    padding: 1.5em;
+    width: 100px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.3rem;
+}
+.first_color{
+    background-color: blue;
+    color: white;
+}
