@@ -1,19 +1,14 @@
 //import './App.css';
-import {useState} from "react"
 import Person from "./component/Person";
+import Counter from "./component/Counter";
+import Calculator from "./component/Calculator";
+import Timer from "./component/Timer";
+import Greetings from "./component/Greetings";
 
 function App() {
-  const [count, setCount] = useState(0)
   return (
     <div>
-      {/* <p>Has clicado {count} veces</p>
-      <button onClick={() => setCount(count+1)}>¡Pulsame!</button>
- */}    
-    
-    
-    <Person></Person>
- 
- 
+      
     </div>
   );
 }
