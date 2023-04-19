@@ -1,0 +1,42 @@
+   [ {
+        "id": 1,
+        "title": "Laws of Gravity",
+        "genre": "Drama"
+      }, {
+        "id": 2,
+        "title": "Haunted Palace, The",
+        "genre": "Horror"
+      }, {
+        "id": 3,
+        "title": "Sound of Fury, The",
+        "genre": "Crime|Drama|Film-Noir"
+      }, {
+        "id": 4,
+        "title": "Otra Familia, La",
+        "genre": "Drama"
+      }, {
+        "id": 5,
+        "title": "Beyond the Time Barrier",
+        "genre": "Sci-Fi"
+      }, {
+        "id": 6,
+        "title": "Man Who Shot Liberty Valance, The",
+        "genre": "Crime|Drama|Western"
+      }, {
+        "id": 7,
+        "title": "Little Princess, A",
+        "genre": "Children|Drama"
+      }, {
+        "id": 8,
+        "title": "Boys Life 3",
+        "genre": "Drama"
+      }, {
+        "id": 9,
+        "title": "Beowulf",
+        "genre": "Action|Adventure|Animation|Fantasy|IMAX"
+      }, {
+        "id": 10,
+        "title": "The Fool",
+        "genre": "Drama"
+      }
+    ]
