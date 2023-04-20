@@ -1,16 +1,11 @@
-//import './App.css';
-import Person from "./component/Person";
-import Counter from "./component/Counter";
-import Calculator from "./component/Calculator";
-import Timer from "./component/Timer";
-import Greetings from "./component/Greetings";
-import Members from "./component/Members";
-import Movies from "./component/Movies";
+import './App.css';
+
+import MoviesSolution from "./components/Movies/MoviesSolution";
 
 function App() {
   return (
     <div>
-      <Movies></Movies>
+      <MoviesSolution></MoviesSolution>
     </div>
   );
 }

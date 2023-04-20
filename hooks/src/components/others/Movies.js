@@ -1,5 +1,5 @@
 //import './Movies.css';
-import movies from "../db/movies.json"
+import movies from "../../db/movies.json"
 import { useState } from "react";
 
 function Movies() {
