@@ -4,6 +4,7 @@ import movies from '../../db/movies.json'
 import MoviesWrapper from './MoviesWrapper';
 import MoviesMain from './MoviesMain';
 import Cards from './Cards';
+import MoviesAction from './MoviesAction';
 
 function MoviesSolution() {
     const [moviesList, setMoviesList]=useState(movies)
@@ -35,11 +36,11 @@ function MoviesSolution() {
     };
   return (
     <MoviesMain>
-         <div className="actions">
-            <button onClick={noFilter}>All</button>
-            <button onClick={filterComedy}>Comedy</button>
-            <button onClick={filterDrama}>Drama</button>
-        </div>
+        <MoviesAction 
+            onFilterComedy={filterComedy} 
+            onFilterDrama={filterDrama} 
+            onNoFilter={noFilter}
+        />
         <MoviesWrapper>
             {moviesList.map((movie) => (
                 <Cards key={movie.id} movie={movie} fadeIn={fadeIn}/>
