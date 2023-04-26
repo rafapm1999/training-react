@@ -13,14 +13,16 @@ function ItemCost(props) {
       unicode: '\u002b'
     },
     minus:{
-      entity: '&#43',
-      unicode: '\u002b'
+      entity: '&#8722',
+      unicode: '\u2212'
     }
-  }
+  };
   return (
     <div className="item-cost flex-20 expense fa-3x flex-center">
-      <span>&#8722; $20</span>
-      <FontAwesomeIcon icon={faArrowDownLong} className='m-left-20'/>
+      <span>{props.money.income && sign.plus.unicode || sign.minus.unicode}
+             ${props.money.amount}
+      </span>
+      <FontAwesomeIcon icon={props.moneyincome && faArrowUpLong || faArrowDownLong} className='m-left-20'/>
     </div>
   );
 }
