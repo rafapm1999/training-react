@@ -8,10 +8,10 @@ import Wrapper from "./wrappers/Wrapper";
 function Expenses() {
 
   return (
-    <Wrapper>
-      {itemList.map((item) => {
+    <Wrapper content={
+      itemList.map((item, index) => {
         return (
-        <ItemContainer>
+        <ItemContainer key={index}>
           <ItemIcon 
             icons={item.icons} 
             classes={item.classesList}
@@ -20,8 +20,8 @@ function Expenses() {
           <ItemCost money={item.money}/>
       </ItemContainer>
       );
-    })}
-    </Wrapper>
+    })
+    }/>     
   );
 };
 
