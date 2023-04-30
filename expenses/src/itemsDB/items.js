@@ -32,6 +32,10 @@ import {faChampagneGlasses,
       electricity:{
         bgColor:'light-electricity',
         color: 'electricity',
+      },
+      insurance: {
+        bgColor: "light-insurance",
+        color: "insurance"
       }
     };
     
