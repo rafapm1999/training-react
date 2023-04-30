@@ -115,7 +115,7 @@ transform: rotate(45deg)
 }
 .hidden, 
 .hidden .checkmark,
-button .hidden {
+button.hidden {
     max-height:  0;
     margin: 0;
     padding: 0;

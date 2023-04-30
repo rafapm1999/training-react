@@ -1,10 +1,21 @@
+//Importamos todo los componentes y elementos que necesitamos en el archivo
 import './ExpensesFilter.css';
 import { useState } from 'react';
 import Wrapper from './wrappers/Wrapper';
-import {expensesStats} from "../utils/expensesStats"
-import {monthToString} from "../utils/monthToString"
-function ExpensesFilter(props) {
+import {expensesStats} from "../utils/expensesStats";
+import {monthToString} from "../utils/monthToString";
 
+//La funcion ExpensesFilter recibe props
+function ExpensesFilter(props) {
+    //Creamos un HOOK de estado, con la variable month, funcion set month, este código se utiliza para actualizar el valor de una variable de estado "month" cuando el usuario selecciona un valor en la interfaz de usuario.
+    const [month, setMonth] = useState(
+        monthToString(new Date().toLocaleDateString())
+    );
+    //este código establece el valor inicial de la variable de estado "month" utilizando la fecha actual en formato de cadena y la función "monthToString", lo que permite que la variable de estado se actualice posteriormente utilizando la función de actualización "setMonth".
+    const handleSelect = (e) => {
+        setMonth(e.target.value)
+    };
+    //Esta constante stats hace una llamada a expensesStats recibiendo el valor que recibe sobre month a traves de props
     const stats = expensesStats(props.months)
   return (
     <Wrapper content={
@@ -24,7 +35,7 @@ function ExpensesFilter(props) {
                 </div>
             </div>
             <form action="">
-                <select name="month">
+                <select name="month" onChange={handleSelect} value={month}>
                     <option value="January">January</option>
                     <option value="February">February</option>
                     <option value="March">March</option>
