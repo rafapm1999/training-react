@@ -9,12 +9,15 @@ function App() {
     /* console.log('in app js');
     console.log(expense); */
     setAddExpense(expense)
+  };
+  const handleExpense = () => {
+    setAddExpense({})
   }
   return (
     <div className="main">
       <h1>Transactions</h1>
       <InputExpenses onSaveNewExpense = {saveNewExpense}/>
-      <Expenses onNewExpense = {addExpense}></Expenses>
+      <Expenses onNewExpense = {addExpense} onClearExpense={handleExpense}></Expenses>
     </div>
   );
 }

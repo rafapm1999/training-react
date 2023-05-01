@@ -1,9 +1,9 @@
 import {faChampagneGlasses, 
   faSquare, 
-  faBurger, 
+  /* faBurger, 
   faGlassWater, 
   faArrowDownLong, 
-  faArrowUpLong, 
+  faArrowUpLong, */ 
   faBriefcase, 
   faCommentDollar, 
   faSackDollar,
@@ -18,12 +18,18 @@ import Wrapper from "./wrappers/Wrapper";
 import { useState } from 'react';
 import { useEffect } from "react";
 import ExpensesFilter from "./ExpensesFilter"
+import {expensesStats} from "../utils/expensesStats";
+import {monthToString} from "../utils/monthToString";
+import InfoAlert from "./alerts/InfoAlert";
 
 function Expenses(props) {
+  const [filter, setFilter] = useState(monthToString(new Date().toLocaleDateString()));
+  const [expenses, setNewExpenses] = useState(itemList);
+  const filteredMonth = (month) => {
+    setFilter(month)
+  }
 
-  const [expenses, setNewExpenses] = useState(itemList)
-
-  let expense = {}
+  let stats = [0,0]
 
   const getIcons = (category) => {
     switch (category) {
@@ -41,10 +47,21 @@ function Expenses(props) {
         return [faSquare, faBoltLightning]
     }
   };
+  /* let expense = {} */
+  let filteredMonths = []
+  if (filter!=="") {
+    filteredMonths = expenses.filter(
+      (item) => monthToString(item.data.date)===filter);
+      if (filteredMonths.length > 0) {
+        stats = expensesStats(filteredMonths)
+      } else {
+        stats = [0, 0]
+      }
+  }
 
   useEffect(() => {
     if (Object.keys(props.onNewExpense).length > 0) {
-      expense = {
+      const expense = {
         icons: getIcons(props.onNewExpense.category),
         classesList: classesList[props.onNewExpense.category],
         data: {
@@ -56,7 +73,8 @@ function Expenses(props) {
           income: props.onNewExpense.isIncome
         }
       };
-      setNewExpenses([...expenses, expense])
+      setNewExpenses([...expenses, expense]);
+      props.onClearExpense()
     };
   }, [props.onNewExpense])
 
@@ -66,22 +84,25 @@ function Expenses(props) {
 
   return (
     <div>
-      <ExpensesFilter months={expenses}></ExpensesFilter>
-    <Wrapper content={
-      expenses.map((item, index) => {
-        return (
-        <ItemContainer key={index}>
-          <ItemIcon 
-            icons={item.icons} 
-            classes={item.classesList}
-          />
-          <ItemInfo data={item.data}/>
-          <ItemCost money={item.money}/>
-      </ItemContainer>
-      );
-    })
-    }/> 
-    </div>    
+      <ExpensesFilter onStats={stats} onSelectMonth={filteredMonth} month={expenses}></ExpensesFilter>
+      <Wrapper content={
+        /* expenses.map((item, index) => { */
+          (filteredMonths.length > 0 && 
+          filteredMonths.map((item, index) => {
+          return (
+          <ItemContainer key={index}>
+            <ItemIcon 
+              icons={item.icons} 
+              classes={item.classesList}
+            />
+            <ItemInfo data={item.data}/>
+            <ItemCost money={item.money}/>
+        </ItemContainer>
+          );
+        })) || <InfoAlert info="No expenses availables."/>
+      }
+    /> 
+  </div>    
   );
 };
 
