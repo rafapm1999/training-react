@@ -1,6 +1,5 @@
 //Aqui importamos el archivo css como componente de estilos css
-import './Button.components.css';
-
+import styled from "styled-components"
 //Creamos un componente dinámico, llamado SubmitButton que puede ser de type type(cualquiera) o de type button(para usarlo con un elemento button)
 //ESte componente va a tener estilos css "inline" escritos directamente en el archivo js
 const SubmitButton = styled.button.attrs(props => ({
@@ -28,4 +27,4 @@ const SubmitButton = styled.button.attrs(props => ({
     }
 `
 
-export default Button;
+export default SubmitButton;
