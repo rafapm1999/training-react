@@ -9,6 +9,7 @@
   border: 0;
   box-sizing: inherit;
   outline: none 0;
+  list-style-type: none;
 }
 body{
   font-family: 'Rubik', 'sans-serif';

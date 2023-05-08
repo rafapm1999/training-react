@@ -4,7 +4,7 @@ import Button from "../UI/Button/Button";
 
 
 function TaskInput(props) {
-    const [value, setValue] = useState(false);
+    const [value, setValue] = useState("");
     const [fullfilled, setIsFullfilled] = useState(true);
     const inputChangeHandler = e => {
         if (e.target.value.trim().length > 0) {
