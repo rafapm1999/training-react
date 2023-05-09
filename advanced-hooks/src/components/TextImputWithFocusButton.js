@@ -7,7 +7,7 @@ function TextInputWithFocusButton() {
         /* console.log(inputElement.current); */
         console.log(inputElement.current.value);
         
-        inputElement.current.focus() //AL hacer click genera un focus() al elemento referenciado (inputElement), y current da el elemento en cuestion al completo, con sus attr, etiqueta, etc
+        inputElement.current.focus() //Al hacer click genera un focus() al elemento referenciado (inputElement), y current da el elemento en cuestion al completo, con sus attr, etiqueta, etc
     }
   return (
     <form 
