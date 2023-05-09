@@ -1,10 +1,10 @@
-import './Modal.module.css';
+import classes from './Modal.module.css';
 
 function Modal(props) {
   return (
     <>
     <div className={`${classes["md-modal"]} ${classes["md-effect-1"]} ${props.visible && classes["md-show"]}`}>
-      <div className={`${classes["md-content"]} ${props.data.loggedIn ? classes.sucess : classes.danger}`}>
+      <div className={`${classes["md-content"]} ${props.data.loggedIn ? classes.success : classes.danger}`}>
         <h3>{props.data.loginHeader}</h3>
         <div>
           <p>{props.data.loginMessage}</p>

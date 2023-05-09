@@ -1,9 +1,24 @@
 import classes from './LoginForm.module.css';
+import {useRef} from "react"
 
-function LoginForm() {
+function LoginForm(props) {
+    const refEmail = useRef("");
+    const refPassword = useRef("");
+    const refCheckbox = useRef(false);
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        const loginData = {
+            email: refEmail.current.value,
+            password: refPassword.current.value,
+            rememberMe: refCheckbox.current.checked
+        }
+        props.onLogin(loginData);
+    }
+
   return (
-    <form>
+    <form onSubmit={handleSubmit}>
         <input 
+            ref={refEmail}
             type="text" 
             name="username" 
             placeholder="E-mail Address" 
@@ -11,6 +26,7 @@ function LoginForm() {
         />
         
         <input 
+            ref={refPassword}
             type="password" 
             name="password" 
             placeholder="Password"  
@@ -20,7 +36,7 @@ function LoginForm() {
         <div 
             className={classes.remember}
         >
-            <input type="checkbox" id="check1" />
+            <input ref={refCheckbox} type="checkbox" id="check1" />
             <label htmlFor="check1">Remember me?</label>
         </div>
 

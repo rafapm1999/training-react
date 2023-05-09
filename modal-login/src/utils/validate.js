@@ -3,7 +3,7 @@
 //un arroba, texto despues del arroba, un punto y luego texto
 export const validateEmail = (email) => {
     //Expresion regular para validar un email
-    if (/^\w+([^\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(mail)) {
+    if (/^\w+([^\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
         return true
     }
     return false
@@ -23,7 +23,9 @@ export const validatePassword = (password) => {
     if (/[0-9]/.test(password)) {
         console.log("Numbers");
     }
+   
     //Caracteres que sí puede usarse en la contraseña
+    //if(/[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/.test(password)) 
     if (/(!|"|#|[$]|%|&|'|[(]|[)]|[*]|[+]|'|-|.|[/])+/.test(password)) {
         console.log("Specials");
     }
@@ -33,7 +35,7 @@ export const validatePassword = (password) => {
     //Validación de contraseñas definitivo
     if (/[a-z]/.test(password)
         &&/[A-Z]/.test(password)
-        &&/(!|"|#|[$]|%|&|'|[(]|[)]|[*]|[+]|'|-|.|[/])+/.test(password)) 
+        &&/[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/.test(password)) 
         {
         console.log('password is valid');
         
