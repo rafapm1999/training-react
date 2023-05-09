@@ -18,7 +18,7 @@ form .remember label {
     font-size: 1.5rem;
 }
 form .remember input[type="checkbox" i]:not(:checked),
-form .remember input[type="checked" i]:checked{
+form .remember input[type="checkbox" i]:checked{
     position: absolute;
     left: -9999px;
 }
@@ -52,7 +52,7 @@ form .remember input[type="checkbox" i]:not(:checked) + label::after{
     opacity: 1;
     transform: scale(1);
     border-radius: .25rem;
-    transition: all .2s ease;
+    transition: all 0.2s ease;
 }
 form .remember input[type="checkbox" i]:not(:checked) + label::after{
     opacity: 0;

@@ -1,7 +1,7 @@
 import classes from './LoginPage.module.css';
 import LoginForm from './LoginForm';
 import Modal from "./Modal/Modal"
-import { validateEmail, validatePassword} from "../../utils/validate"
+import { validateEmail, validatePassword, validatePasswordLength} from "../../utils/validate"
 import ReactDOM from 'react-dom';
 import {useState} from "react";
 
@@ -15,8 +15,9 @@ function LoginPage() {
     rememberMe: false,
     loginError: ""
   });
-  //Intentar refactor
-  const handleVisibility = (loginData) => {
+
+  //Antes del refactor
+  /* const handleVisibility = (loginData) => {
     if (
       loginData 
       && validateEmail(loginData.email) 
@@ -43,7 +44,31 @@ function LoginPage() {
         console.log('Login Failed');
     }
     setVisible(!visible);
+  } */
+
+  //Despues del Refactor
+  const handleVisibility = (loginData) => {
+    const info = {
+      loggedIn: true,
+      email: loginData.email,
+      password: loginData.password,
+      rememberMe: loginData.rememberMe,
+      loginHeader: "Login Successfully",
+      loginMessage: "You have been logged successfully"
+    }
+    if (
+      !loginData 
+      || !validateEmail(loginData.email) 
+      || !validatePassword(loginData.password)
+      || !validatePasswordLength(loginData.password)) {
+       info.loggedIn = false;
+       info.loginHeader = "Login Successfully";
+       info.loginMessage= "You have been logged successfully"
+    }
+    setLoginInfo(info);
+    setVisible(!visible);
   }
+
   return (
   <>
     {ReactDOM.createPortal(<Modal visible={visible} onLogin={handleVisibility} data={loginInfo}/>, document.querySelector("#modal"))}
