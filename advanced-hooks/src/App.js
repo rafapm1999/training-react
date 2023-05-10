@@ -1,11 +1,13 @@
 import './App.css';
-import { useReducer } from 'react';
 import FilterReducer from './components/FilterReducer';
-import CounterReduce from './components/CounterReduce';
+import CounterReduce from './components/CounterReducer';
 
 function App() {
   return (
+    <>
+    <FilterReducer></FilterReducer>
     <CounterReduce></CounterReduce>
+    </>
   );
 }
 
