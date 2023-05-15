@@ -4,7 +4,33 @@
     background-color: #e0e0e0;
     padding: 1rem 2rem;
     cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.title{
+    width: 80%;
+    padding: 1em;
+    transition: all .3s ease;
 }
 .even{
     background-color: #fafafa;
+}
+.actions{
+    padding: 0.7em;
+    border-radius: 50%;
+    content: flex-center '../../index.css';
+    width: 40px;
+    height: 40px;
+    margin-right: 1em;
+}
+.edit-mode{
+    background-color: #9a9595;
+    border-radius: .3em;
+}
+.edit{
+    background-color: #4caf50;
+}
+.delete{
+    background-color: #f44336;
 }

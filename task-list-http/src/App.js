@@ -11,7 +11,7 @@ function App() {
 
   //Esta función fetchTaskHandler se encarga de hacer las peticiones GET
   //Es una función async (asincrona)
-  const fetchTasksHandler = async (method = "GET", taskText = "") => {
+  const fetchTasksHandler = async (method = "GET", task = { id: "", text: ""}) => {
     try {
       setPending(true);
       setError(null);
@@ -21,11 +21,23 @@ function App() {
       if (method === "DELETE") {
         response = await fetch(
           "https://task-list-e73ae-default-rtdb.europe-west1.firebasedatabase.app/tasks/" +
-            taskText +
+            task.id +
             ".json", {
               method
             }
         );
+          }
+        else if (method === "PATCH") {
+            response = await fetch(
+              "https://task-list-e73ae-default-rtdb.europe-west1.firebasedatabase.app/tasks/" +
+                task.id +
+                ".json", {
+                  method,
+                  headers:{
+                    "Content-Type": "application/json",
+                  }, 
+                  body: JSON.stringify({ title: task.text })
+                });
       } else {
         response = await fetch(
           "https://task-list-e73ae-default-rtdb.europe-west1.firebasedatabase.app/tasks.json",
@@ -34,7 +46,7 @@ function App() {
             headers: {
               "Content-Type": method !== "GET" ? "application/json" : "",
             },
-            body: method !== "GET" ? JSON.stringify({ title: taskText }) : null,
+            body: method !== "GET" ? JSON.stringify({ title: task.text }) : null,
           }
         );
       }
@@ -47,7 +59,7 @@ function App() {
         } else {
           fetchTasksHandler();
         }
-        setValue(data);
+        /* setValue(data); */
       }
     } catch (error) {
       setError({
@@ -63,16 +75,17 @@ function App() {
   }, []);
 
   const addTaskHandler = (text) => {
-    fetchTasksHandler("POST", text);
+    fetchTasksHandler("POST", {text: text});
   };
 
   const deleteHandler = (taskId) => {
-   /*  setValue((prevTask) => {
-      const updatedTasks = prevTask.filter((task) => task.id !== taskId);
-      return updatedTasks;
-    }); */
-    fetchTasksHandler("DELETE", taskId);
+    fetchTasksHandler("DELETE", {id: taskId});
   };
+
+  const updateItemHandler = (taskId, taskText) => {
+    fetchTasksHandler('PATCH', {id: taskId, text: taskText});
+    
+  }
 
   return (
     <main>
@@ -82,7 +95,7 @@ function App() {
       {pending && <HourGlass></HourGlass>}
       <section className={classes["task-content"]}>
         {!pending && value !== null && error === null && (
-          <TaskList items={value} onDeleteItem={deleteHandler}></TaskList>
+          <TaskList items={value} onDeleteItem={deleteHandler} onEditItem={updateItemHandler}></TaskList>
         )}
         {!pending && value === null && !error && (
           <h2
@@ -96,7 +109,7 @@ function App() {
             No task available. Add one?
           </h2>
         )}
-        {!pending && value === null && error !== null && (
+        {!pending && error !== null && (
           <h2
             style={{
               textAlign: "center",
