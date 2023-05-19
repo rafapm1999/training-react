@@ -6,8 +6,9 @@ function Item(props) {
   const deleteHandler = () => {
     props.onDelete(props.id);
   };
-  const editHandler = () => {
+  const editHandler = (e) => {
     //Cuando se pone el foco en el elemento
+    e.stopPropagation();
     titleRef.current.focus();
     setIsEditing(true);
   };
@@ -15,12 +16,19 @@ function Item(props) {
   const saveHandler = () => {
     //Cuando se quita el foco del elemento
     titleRef.current.blur();
-    props.onEdit(props.id, titleRef.current.textContent);
+    if (titleRef.current.textContent !== props.children) {
+      props.onEdit(props.id, titleRef.current.textContent);
+    }
+    if (titleRef.current.textContent.trim().length === 0 ) {
+      deleteHandler();
+    } else if (titleRef.current.textContent !== props.children) {
+      props.onEdit(props.id, titleRef.current.textContent);
+    }
     setIsEditing(false);
   };
 
   const handleKeyPress = (e) => {
-    if (e.key === "Enter") {
+    if (e.key === "Enter" || e.key === "Escape") {
       saveHandler();
     }
   };

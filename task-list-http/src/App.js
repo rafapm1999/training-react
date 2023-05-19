@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import TaskList from "./components/Tasks/TaskList";
 import HourGlass from "./components/UI/Spinners/HourGlass";
 
+const BASE_URL = "https://task-list-e73ae-default-rtdb.europe-west1.firebasedatabase.app/";
 function App() {
   const [value, setValue] = useState({});
   const [pending, setPending] = useState(false);
@@ -20,7 +21,7 @@ function App() {
 
       if (method === "DELETE") {
         response = await fetch(
-          "https://task-list-e73ae-default-rtdb.europe-west1.firebasedatabase.app/tasks/" +
+           BASE_URL + "tasks/" +
             task.id +
             ".json", {
               method
@@ -29,7 +30,7 @@ function App() {
           }
         else if (method === "PATCH") {
             response = await fetch(
-              "https://task-list-e73ae-default-rtdb.europe-west1.firebasedatabase.app/tasks/" +
+              BASE_URL + "tasks/" +
                 task.id +
                 ".json", {
                   method,
@@ -40,7 +41,7 @@ function App() {
                 });
       } else {
         response = await fetch(
-          "https://task-list-e73ae-default-rtdb.europe-west1.firebasedatabase.app/tasks.json",
+          BASE_URL + "tasks.json",
           {
             method,
             headers: {
