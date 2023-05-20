@@ -1,12 +1,13 @@
-//import './Contact.css';
+//import './About.css';
 
-function Contact() {
+function NewAbout() {
+ 
   return (
     <>
-    <h2>Contact</h2>
+    <h2>NewAbout</h2>
     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe, rem.</p>
     </>
   );
 }
 
-export default Contact;
+export default NewAbout;
